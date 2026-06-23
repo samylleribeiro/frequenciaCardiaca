@@ -13,7 +13,9 @@ if (BPMsalvo) {
     let resultado = document.getElementById("resultado");
     resultado.innerHTML = BPMsalvo;
     document.querySelector('.container-resultado').style.display = 'block';
-    document.getElementById('coracao').style.display = 'block';
+
+    let coracao = document.getElementById('coracao');
+    coracao.style.display = 'block';
 
     // Olha o que estava salvo no texto e chama a função de estilo correspondente
  if (BPMsalvo.includes("✅") || BPMsalvo.includes("🟢")) {
@@ -24,6 +26,13 @@ if (BPMsalvo) {
         estiloFrequenciaLenta();
     } else if (BPMsalvo.includes("🚨") || BPMsalvo.includes("🔴")) {
         estiloFrequenciaAcelerada();
+    }
+
+       // Pega o número puro salvo e reativa o pulso!
+    let numeroSalvo = localStorage.getItem("numeroBPMpuro");
+    if (numeroSalvo) {
+        let tempoBatida = 60 / Number(numeroSalvo);
+        coracao.style.animation = `pulsar ${tempoBatida}s infinite ease-in-out`;
     }
 }
 // Função para conferir a frequência cardíaca
@@ -83,6 +92,8 @@ function conferirBPM() {
 
     // Salva o resultado no localStorage
     localStorage.setItem("ultimoBPM", resultado.innerHTML);
+    //  Salva o número puro 
+    localStorage.setItem("numeroBPMpuro", numero);
 }
 // funções auxiliares para os estilo de saúde, alerta e erroPerigo
 // função auxiliar para erro 
@@ -155,6 +166,7 @@ function limpar() {
     document.body.style.backgroundColor = "";
     resultado.style.color = "";
     localStorage.removeItem("ultimoBPM");
+    localStorage.removeItem("numeroBPMpuro");
     document.getElementById('frequencia-cardiaca').focus();
     document.querySelector('.container-resultado').style.display = 'none';
     coracao.style.display = 'none';
