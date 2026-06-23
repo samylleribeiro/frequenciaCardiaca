@@ -1,0 +1,180 @@
+/* ===== ESTILO GERAL ===== */
+body {
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e0f2f1;    /* Verde-água bem clarinho (clima de saúde) */
+    padding: 40px 20px;
+}
+body.com-transicao {
+    transition: background-color 0.5s ease;
+}
+/* ===== TÍTULO ===== */
+h1 {
+    color: #00796b; /* 🌟 Verde escuro médico */
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+/* ===== ENTRADAS (INPUTS E LABELS) ===== */
+label {
+    font-size: 16px;
+    color: #00796b;
+    font-weight: bold;
+    display: block;    /* texto ACIMA do input  */
+    margin: 15px auto 5px auto;
+    text-align: center; /* Centraliza acima do campo */
+    margin-bottom: 10px;/* espacinho entre o texto e a caixinha */
+}
+
+input {
+    padding: 12px 15px;
+    font-size: 16px;
+    border: 2px solid #4db6ac; /* Verde intermediário */
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s, background-color 0.3s;
+    width: 100%;
+    max-width: 280px; 
+    background-color: #ffffff;
+    margin-bottom: 15px;
+}
+
+input:focus {
+    border-color: #00796b; 
+    box-shadow: 0 0 5px rgba(77, 182, 172, 0.5);
+}
+
+.container-campos {
+    display: flex;
+    flex-wrap: wrap;           /*se não couber no celular, ele quebra a linha! */
+    justify-content: center;   /* Centraliza tudo no meio da tela */
+    gap: 20px;                 /* Dá um espacinho show de lado e de cima entre os campos */
+    margin-bottom: 20px;       /* Afasta os campos dos botões de baixo */
+}
+.container-campos > div {
+    margin-bottom: 10px; /* Dá uma folga vertical extra se eles empilharem no celular */
+    min-width: 250px;
+    padding: 0 15px;
+}
+/* ===== BOTÕES ===== */
+button {
+    display: inline-block;
+    margin: 15px 8px; /* Mais espacinho entre eles */
+    padding: 12px 25px; 
+    font-size: 16px;
+    background-color: #009688; /* 🌟 Botão verde esmeralda lindo */
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.2s, background-color 0.3s;
+}
+button:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+button:active {
+    transform: scale(0.95); 
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2); 
+}
+
+.btn-limpar {
+    background-color: #78909c; /* Cinza azulado para o botão de limpar */
+}
+.btn-limpar:hover {
+    background-color: #607d8b; 
+}
+
+/* ===== CAIXINHA DO RESULTADO (MODO CLARO) ===== */
+.container-resultado {
+    background-color: #ffffff; 
+    width: 90%; /* Se adapta a telas pequenas */
+    max-width: 420px; /* Fica elegante no computador */
+    margin: 30px auto 0 auto; 
+    padding: 25px 20px; /* Mais respiro interno */
+    border-radius: 15px; /* Cantos arredondados modernos */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* Sombra suave de aplicativo */
+    display: none; 
+    border: 1px solid rgba(0, 0, 0, 0.05); /* Uma bordinha quase invisível que dá elegância */
+}
+
+#resultado {
+    line-height: 1.6;
+    color: #004d40;
+    font-size: 18px;
+    margin: 0;
+}
+/* CORAÇÃO*/
+#coracao {
+    font-size: 70px;               /* Deixa coração grande e visível */
+    margin: 20px auto;             /* Cria um espaçamento perfeito acima e abaixo */
+    display: none;                 /* coração começa escondido */
+    text-align: center;            /* Alinha o emoji no meio da tela */
+    transition: transform 0.2s ease-in-out; /* Deixa o movimento de escala mais suave */
+}
+/* O segredo para o JavaScript conseguir fazer ele bater */
+@keyframes pulsar {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.3); } /* Dá aquela inflada clássica do batimento */
+    60% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+/* ===== BOTÃO NOTURNO FLUTUANTE ===== */
+#btn-noturno {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 20px;
+    z-index: 1000;
+}
+
+/* ===== MODO NOTURNO ===== */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0f2f1;
+}
+
+body.dark-mode h1 { 
+    color: #80cbc4; /* Verde claro pastel para leitura perfeita no escuro */
+}
+
+body.dark-mode .container-resultado {
+    background-color: #1e1e1e; 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.05); /* 🌟 Evita que a caixinha suma no fundo escuro */
+}
+/*Aplicando o tema escuro no input */
+body.dark-mode input{
+    background-color: #1e1e1e; 
+    border-color: #004d40;
+    color: #ffffff;
+}
+body.dark-mode label {
+    color: #80cbc4; /*Deixa as labels em tom pastel legível no escuro */
+}
+/* Garante que o texto de dentro do campo apareça bem no modo escuro */
+body.dark-mode input::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Um branco com transparência para ficar mas legível */
+}
+body.dark-mode button {
+    background-color: #004d40; /* Verde bem escuro pro botão no dark mode */
+    color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode button:hover {
+    background-color: #00695c;
+}
+
+body.dark-mode .btn-limpar {
+    background-color: #37474f; /* Botão de limpar escuro no modo noturno */
+}
+body.dark-mode .btn-limpar:hover {
+    background-color: #455a64;
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conferir Frequência Cardiaca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <button id="btn-noturno" onclick="toggleDarkMode()">🌙</button>
+
+    <h1>Conferir Frequência Cardiaca ❤️</h1>
+
+<div class="container-campos">
+  <div>
+ <label for="frequencia-cardiaca">Frequência Cardiaca (bpm) ❤️:</label>
+ <input type="number" id="frequencia-cardiaca"  placeholder="Sua Frequência Cardiaca"> 
+</div> </div>
+
+    <button onclick="conferirBPM()">Conferir Frequência Cardiaca</button>
+    <button class="btn-limpar" onclick="limpar()">Limpar</button>
+    
+
+    <div class="container-resultado">
+        <h2 id="resultado"></h2>
+    </div>
+    
+    <div id="coracao" class="coracao">❤️</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script> 
+
+    <script src="script.js"></script>
+</body>
+</html>
